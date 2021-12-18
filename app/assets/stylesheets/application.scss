@@ -1,0 +1,44 @@
+
+ @import "bootstrap";
+
+.top-page-header{
+  height: 40%;
+  border-bottom: 2px solid lightslategrey;
+}
+
+.header-logo {
+  width: 25%;
+}
+
+.content-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-card{
+  flex: none;
+}
+
+.card-body {
+  text-align: right;
+}
+
+.item-area {
+  border-bottom:2px solid #b7dddd ;
+}
+
+.store-card{
+  flex: none;
+}
+
+.store-area {
+  border-bottom:2px solid #fcf2c5 ;
+}
+
+.project-card{
+  flex: none;
+}
+
+.project-area {
+  border-bottom:2px solid #f4c1bd ;
+}
