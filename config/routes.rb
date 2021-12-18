@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :views
+  devise_for :users
   root to: "stores#top"
   resources :stores, only: :index do
     collection do
