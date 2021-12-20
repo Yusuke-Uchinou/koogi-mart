@@ -42,7 +42,6 @@
 | ---------- | ---------- | ------------------------------ |
 | c_name     | string     | null: false                    |
 | c_text     | text       | null: false                    |
-| genre_id   | integer    | null: false                    |
 | user       | references | null: false, foreign_key: true |
 
 ### association
