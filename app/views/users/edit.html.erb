@@ -1,10 +1,11 @@
 <div class='account-page' id='account-page'>
   <div class='account-page__inner clearfix'>
     <div class='account-page__inner--left account-page__header'>
-      <h2>プロフィールの編集</h2>
+      <h2 class="m-3">プロフィールの編集</h2>
     </div>
     <div class='account-page__inner--right user-form'>
       <%= form_with model: current_user, local: true do |f|%>
+        <%= render 'shared/error_messages', model: f.object %>
         <div class='field'>
           <div class='field-label'>
             <%= f.label :name%>
