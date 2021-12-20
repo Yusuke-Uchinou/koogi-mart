@@ -10,7 +10,7 @@
 
 ### association
 
-- belongs_to :store
+- belongs_to :creator
 - has_many :orders
 - has_many :rooms
 - has_many :room_users 
@@ -21,31 +21,28 @@
 
 ## destinationsテーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| name       | string     | null: false                    |
-| post_num   | integer    | null: false                    |
-| p_price    | integer    | null: false                    |
-| address    | string     | null: false                    |
-| building   | string     |                                |
-| phone      | integer    | null: false                    |
-| user       | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| post_num      | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone         | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### association
 
-- belongs_to :store
-- has_many :option
-- has_many :rooms
+- belongs_to :user
 
 
-## storesテーブル
+## creatorsテーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| s_name     | string     | null: false                    |
-| s_text     | text       | null: false                    |
-| genre_id   | integer    | null: false                    |
-| user       | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| creator_name | string     | null: false                    |
+| creator_text | text       | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 ### association
 
@@ -54,32 +51,31 @@
 - has_many :items
 
 
+## ordersテーブル
 
-## projectテーブル
-
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| p_name     | string     | null: false                    |
-| p_text     | text       | null: false                    |
-| p_price    | integer    | null: false                    |
-| genre_id   | integer    | null: false                    |
-| day        | integer    | null: false                    |
-| store      | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| order_name   | string     | null: false                    |
+| order_text   | text       | null: false                    |
+| order_price  | integer    | null: false                    |
+| genre_id     | integer    | null: false                    |
+| day          | integer    | null: false                    |
+| creator      | references | null: false, foreign_key: true |
 
 ### association
 
-- belongs_to :store
+- belongs_to :creator
 - has_many :option
 - has_many :rooms
 
 
 ## optionsテーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| o_name     | string     | null: false                    |
-| o_price    | integer    | null: false                    |
-| project    | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| option_name  | string     | null: false                    |
+| option_price | integer    | null: false                    |
+| project      | references | null: false, foreign_key: true |
 
 ### association
 
@@ -115,7 +111,7 @@
 - has_many :messages
 
 
-## ordersテーブル
+## transactionsテーブル
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
@@ -134,17 +130,17 @@
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| i_name     | string     | null: false                    |
-| i_text     | text       | null: false                    |
-| i_price    | integer    | null: false                    |
+| item_name  | string     | null: false                    |
+| item_text  | text       | null: false                    |
+| item_price | integer    | null: false                    |
 | genre_id   | integer    | null: false                    |
 | postage_id | integer    | null: false                    |
 | day_id     | integer    | null: false                    |
-| store      | references | null: false, foreign_key: true |
+| creator    | references | null: false, foreign_key: true |
 
 ### association
 
-- belongs_to :store
+- belongs_to :creator
 - has_one :purchase
 
 
