@@ -1,0 +1,44 @@
+<div class="my-page-header position-relative">
+  <div class="avatar-area d-flex align-items-center position-absolute top-50 start-0 translate-middle-y">
+    <img class="rounded-circle ms-2" src="https://picsum.photos/50/50">
+    <h3 class="ms-3"><%= @nickname %></h3>
+  </div>
+  <ul class="nav justify-content-end">
+    <div>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">お知らせ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">マイストア</a>
+    </li>
+    </div>
+    <div>
+    <li class="nav-item">
+      <a class="nav-link" href="#">購入・オーダー</a>
+    </li>
+    <li class="nav-item">
+      <%= link_to "編集", edit_user_path, class:"nav-link"%>
+    </li>
+    </div>
+  </ul>
+</div>
+
+<div class="my-page-main p-2">
+  <div class="notice-area my-5 mx-auto p-2">
+    <div class="notice-title">
+      <p class="ps-3 py-3 fs-4 fw-bold">お知らせ</p>
+    </div>
+    <div class="notice-main">
+      <p class="notice-date m-3">2021.12.17</p>
+      <p class="notice-text m-3 pb-3 border-bottom border-dark">商品が購入されました</p>
+    </div>
+     <div class="notice-main">
+      <p class="notice-date m-3">2021.12.27</p>
+      <p class="notice-text m-3 pb-3 border-bottom border-dark">オーダーチャットに新しいコメントがあります</p>
+    </div>
+  </div>
+  <div class="float-end me-3">
+    <%= link_to "トップページへ戻る", root_path%>
+  </div>
+</div>
+

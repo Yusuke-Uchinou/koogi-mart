@@ -42,3 +42,40 @@
 .project-area {
   border-bottom:2px solid #f4c1bd ;
 }
+
+.sign-up {
+  text-decoration: none;
+}
+
+.sign-up:hover {
+  color: #fff;
+}
+
+.log-in {
+  text-decoration: none;
+}
+
+.log-in:hover {
+  color: #fff;
+}
+
+.input-default {
+  height: 30px;
+  resize: none;
+}
+
+.my-page-header {
+  height: 75px;
+  background-color: #fbe2c4;
+}
+
+.my-page-main {
+  height: calc(100vh - 80px);
+  background-color: #fdf2e9;
+}
+
+.notice-area {
+  height: 400px;
+  width: 90%;
+  background-color: white;
+}
