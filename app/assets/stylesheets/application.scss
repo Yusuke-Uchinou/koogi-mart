@@ -42,3 +42,30 @@
 .project-area {
   border-bottom:2px solid #f4c1bd ;
 }
+
+.sign-up {
+  text-decoration: none;
+}
+
+.sign-up:hover {
+  color: #fff;
+}
+
+.log-in {
+  text-decoration: none;
+}
+
+.log-in:hover {
+  color: #fff;
+}
+
+.input-default {
+  height: 30px;
+  resize: none;
+}
+
+.avatar-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
