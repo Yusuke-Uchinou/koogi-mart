@@ -10,7 +10,7 @@
 
 ### association
 
-- belongs_to :store
+- belongs_to :creator
 - has_many :orders
 - has_many :rooms
 - has_many :room_users 
@@ -33,17 +33,15 @@
 
 ### association
 
-- belongs_to :store
-- has_many :option
-- has_many :rooms
+- belongs_to :user
 
 
-## storesテーブル
+## creatorsテーブル
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| s_name     | string     | null: false                    |
-| s_text     | text       | null: false                    |
+| c_name     | string     | null: false                    |
+| c_text     | text       | null: false                    |
 | genre_id   | integer    | null: false                    |
 | user       | references | null: false, foreign_key: true |
 
@@ -52,7 +50,6 @@
 - belongs_to :user
 - has_many :projects 
 - has_many :items
-
 
 
 ## projectテーブル
@@ -64,11 +61,11 @@
 | p_price    | integer    | null: false                    |
 | genre_id   | integer    | null: false                    |
 | day        | integer    | null: false                    |
-| store      | references | null: false, foreign_key: true |
+| creator    | references | null: false, foreign_key: true |
 
 ### association
 
-- belongs_to :store
+- belongs_to :creator
 - has_many :option
 - has_many :rooms
 
@@ -140,11 +137,11 @@
 | genre_id   | integer    | null: false                    |
 | postage_id | integer    | null: false                    |
 | day_id     | integer    | null: false                    |
-| store      | references | null: false, foreign_key: true |
+| creator    | references | null: false, foreign_key: true |
 
 ### association
 
-- belongs_to :store
+- belongs_to :creator
 - has_one :purchase
 
 
