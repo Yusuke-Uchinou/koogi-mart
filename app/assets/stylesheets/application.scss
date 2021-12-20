@@ -27,11 +27,11 @@
   border-bottom:2px solid #b7dddd ;
 }
 
-.store-card{
+.creator-card{
   flex: none;
 }
 
-.store-area {
+.creator-area {
   border-bottom:2px solid #fcf2c5 ;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .my-page-main {
-  height: calc(100vh - 80px);
+  height: calc(100vh - 75px);
   background-color: #fdf2e9;
 }
 
@@ -78,4 +78,14 @@
   height: 400px;
   width: 90%;
   background-color: white;
+}
+
+.creator-input-area {
+  height: 450px;
+  width: 80vmin;
+  background-color: white;
+}
+
+.creator-text {
+  height: 150px;
 }

@@ -1,0 +1,31 @@
+<div class="my-page-header position-relative">
+  <div class="avatar-area d-flex align-items-center position-absolute top-50 start-0 translate-middle-y">
+    <img class="rounded-circle ms-2" src="https://picsum.photos/50/50">
+    <h3 class="ms-3"><%= current_user.nickname %></h3>
+  </div>
+</div>
+
+<div class="my-page-main p-2">
+  <div class="creator-input-area my-5 mx-auto p-2">
+    <div class="creator-title">
+      <p class="ps-3 py-3 fs-4 fw-bold">クリエイター登録</p>
+    </div>
+    <%= form_with model: @creator, url: "/creators", method: :post, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <div class="p-2">
+      <div class="creator-name mb-3">
+        <label for="exampleFormControlInput1" class="form-label">クリエイター名</label>
+        <%= f.text_field :creator_name, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">紹介文</label>
+        <%= f.text_area :creator_text, class: "form-control creator-text" %>
+      </div>
+        <%= f.submit "確定", class: "px-2 py-1 border-0 rounded"%>
+    </div>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <%= link_to "トップページへ戻る", root_path%>
+  </div>
+</div>

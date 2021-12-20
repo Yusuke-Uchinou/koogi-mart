@@ -21,15 +21,15 @@
 
 ## destinationsテーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| name       | string     | null: false                    |
-| post_num   | integer    | null: false                    |
-| p_price    | integer    | null: false                    |
-| address    | string     | null: false                    |
-| building   | string     |                                |
-| phone      | integer    | null: false                    |
-| user       | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| post_num      | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone         | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### association
 
@@ -38,11 +38,11 @@
 
 ## creatorsテーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| c_name     | string     | null: false                    |
-| c_text     | text       | null: false                    |
-| user       | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| creator_name | string     | null: false                    |
+| creator_text | text       | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 ### association
 
@@ -51,16 +51,16 @@
 - has_many :items
 
 
-## projectテーブル
+## ordersテーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| p_name     | string     | null: false                    |
-| p_text     | text       | null: false                    |
-| p_price    | integer    | null: false                    |
-| genre_id   | integer    | null: false                    |
-| day        | integer    | null: false                    |
-| creator    | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| order_name   | string     | null: false                    |
+| order_text   | text       | null: false                    |
+| order_price  | integer    | null: false                    |
+| genre_id     | integer    | null: false                    |
+| day          | integer    | null: false                    |
+| creator      | references | null: false, foreign_key: true |
 
 ### association
 
@@ -71,11 +71,11 @@
 
 ## optionsテーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| o_name     | string     | null: false                    |
-| o_price    | integer    | null: false                    |
-| project    | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| option_name  | string     | null: false                    |
+| option_price | integer    | null: false                    |
+| project      | references | null: false, foreign_key: true |
 
 ### association
 
@@ -111,7 +111,7 @@
 - has_many :messages
 
 
-## ordersテーブル
+## transactionsテーブル
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
@@ -130,9 +130,9 @@
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| i_name     | string     | null: false                    |
-| i_text     | text       | null: false                    |
-| i_price    | integer    | null: false                    |
+| item_name  | string     | null: false                    |
+| item_text  | text       | null: false                    |
+| item_price | integer    | null: false                    |
 | genre_id   | integer    | null: false                    |
 | postage_id | integer    | null: false                    |
 | day_id     | integer    | null: false                    |
