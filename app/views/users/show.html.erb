@@ -17,7 +17,7 @@
       <a class="nav-link" href="#">購入・オーダー</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">編集</a>
+      <%= link_to "編集", edit_user_path, class:"nav-link"%>
     </li>
     </div>
   </ul>
@@ -34,8 +34,11 @@
     </div>
      <div class="notice-main">
       <p class="notice-date m-3">2021.12.27</p>
-      <p class="notice-text m-3 pb-3 border-bottom border-dark">見積依頼に新しいコメントがあります</p>
+      <p class="notice-text m-3 pb-3 border-bottom border-dark">オーダーチャットに新しいコメントがあります</p>
     </div>
+  </div>
+  <div class="float-end me-3">
+    <%= link_to "トップページへ戻る", root_path%>
   </div>
 </div>
 
