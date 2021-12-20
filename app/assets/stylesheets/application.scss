@@ -64,8 +64,18 @@
   resize: none;
 }
 
-.avatar-img {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
+.my-page-header {
+  height: 75px;
+  background-color: #fbe2c4;
+}
+
+.my-page-main {
+  height: calc(100vh - 80px);
+  background-color: #fdf2e9;
+}
+
+.notice-area {
+  height: 400px;
+  width: 90%;
+  background-color: white;
 }
