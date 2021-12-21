@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @creator = Creator.all
     @nickname = current_user.nickname
   end
 

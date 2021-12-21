@@ -2,13 +2,19 @@
  @import "bootstrap";
 
 .top-page-header{
-  height: 40%;
+  height: 250px;
   border-bottom: 2px solid lightslategrey;
 }
 
 .header-logo {
   width: 25%;
 }
+
+
+.header-left{
+  min-width: 50vw;
+}
+
 
 .content-cards {
   display: flex;

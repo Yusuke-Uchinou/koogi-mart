@@ -1,5 +1,6 @@
 class CreatorsController < ApplicationController
   def top
+    @creator = Creator.all
   end
 
   def index
