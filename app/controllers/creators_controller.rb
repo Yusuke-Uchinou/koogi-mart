@@ -1,5 +1,6 @@
 class CreatorsController < ApplicationController
   def top
+    @creator = Creator.all
   end
 
   def index
@@ -17,6 +18,11 @@ class CreatorsController < ApplicationController
       render new_creator_path
     end
   end
+
+  def show
+    @creator = Creator.find(params[:id])
+  end
+
 
   private
   def creator_params

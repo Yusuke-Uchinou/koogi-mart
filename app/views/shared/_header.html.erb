@@ -1,23 +1,31 @@
-<header class="top-page-header pb-5">
+<header class="top-page-header">
   <div class="title-contents">
     <div class="header-logo m-5">
       <h1>Koogi<br>mart</h1>
     </div>
   </div>
+  <div class="header-left d-flex flex-column float-end">
   <div class="free-search-area input-group mb-3 px-3">
     <input type="text" class="free-search form-control" placeholder="フリーワード検索" aria-label="Recipient's username" aria-describedby="button-addon2">
     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
   </div>
-  <div class="btn-group float-end me-3" role="group" aria-label="Basic checkbox toggle button group">
+  <div class="btn-group btn-groupme-3 me-2" role="group" aria-label="Basic checkbox toggle button group">
     <% if user_signed_in? %>
       <input type="checkbox" class="btn-check" id="btncheck1">
       <label class="btn btn-outline-primary" for="btncheck1">
         <%= link_to current_user.nickname, "/users/#{current_user.id}" %>
       </label>
-
-      <input type="checkbox" class="btn-check" id="btncheck2">
-      <label class="btn btn-outline-primary" for="btncheck2">クリエイターズページ</label>
-
+      <% if @creator.exists?(user_id: current_user.id) %>
+        <input type="checkbox" class="btn-check" id="btncheck2">
+        <label class="btn btn-outline-primary" for="btncheck2">
+        <%= link_to "マイアトリエ",  "/creators/#{current_user.id}" %>
+        </label>
+      <% else %>
+        <input type="checkbox" class="btn-check" id="btncheck2">
+        <label class="btn btn-outline-primary" for="btncheck2">
+        <%= link_to "クリエイター登録",  new_creator_path %>
+        </label>
+      <% end %>
       <input type="checkbox" class="btn-check" id="btncheck2">
       <label class="btn btn-outline-primary" for="btncheck2">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -32,5 +40,6 @@
         <%= link_to "ログイン", new_user_session_path, class: "log-in" %>
       </label>
     <% end %>
+  </div>
   </div>
 </header>

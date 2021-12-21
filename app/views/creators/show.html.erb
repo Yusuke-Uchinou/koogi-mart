@@ -1,0 +1,32 @@
+<div class="title-contents">
+  <div class="header-logo m-3">
+    <h1>Koogi<br>mart</h1>
+  </div>
+</div>
+<div class="my-page-header position-relative">
+  <div class="avatar-area d-flex align-items-center position-absolute top-50 start-0 translate-middle-y">
+    <h4 class="ms-3"><%= @creator.creator_name %><span class="fs-5">さんの</span>アトリエ</h4>
+  </div>
+</div>
+<div class="container pt-5">
+  <ul class="nav nav-tabs row">
+    <li class="nav-item col">
+      <a class="nav-link active" href="#">紹介</a>
+    </li>
+    <li class="nav-item col">
+      <a class="nav-link" href="#">作品展示</a>
+    </li>
+    <li class="nav-item col">
+      <a class="nav-link" href="#">メニュー</a>
+    </li>
+  </ul>
+  <div class="creator-intro d-flex flex-wrap justify-content-center">
+    <div class="creator-img">
+      <img class="m-4" src="https://picsum.photos/350/300">
+    </div>
+    <div class="intro-text">
+      <p><%= @creator.creator_text%></p>
+    </div>
+  </div>
+  <div>
+</div>
