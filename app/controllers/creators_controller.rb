@@ -1,9 +1,12 @@
 class CreatorsController < ApplicationController
   def top
-    @creator = Creator.all
+    @creators = Creator.all
+    @new_creators = Creator.limit(4).order(:created_at)
+
   end
 
   def index
+    @creators = Creator.all
   end
 
   def new
@@ -26,6 +29,6 @@ class CreatorsController < ApplicationController
 
   private
   def creator_params
-    params.require(:creator).permit(:creator_name, :creator_text).merge(user_id: current_user.id)
+    params.require(:creator).permit(:creator_name, :creator_short_text, :creator_text).merge(user_id: current_user.id)
   end
 end

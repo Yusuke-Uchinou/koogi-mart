@@ -8,7 +8,11 @@ RSpec.describe Creator, type: :model do
 
   describe 'クリエイター新規登録' do
     context '新規登録できる場合' do
-      it 'creator_nameとcreator_textがあれば登録できる' do
+      it 'creator_nameとcreator_short_textとcreator_textがあれば登録できる' do
+        expect(@creator).to be_valid
+      end
+      it 'creator_short_textがなくてもう登録できる' do
+        @creator.creator_short_text = ''
         expect(@creator).to be_valid
       end
     end
