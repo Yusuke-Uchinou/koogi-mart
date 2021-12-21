@@ -29,12 +29,21 @@
   text-align: right;
 }
 
+.card-text {
+  white-space: pre-wrap;
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
+}
+
 .item-area {
   border-bottom:2px solid #b7dddd ;
 }
 
 .creator-card{
   flex: none;
+  width: 400px;
+  height: 100%;
 }
 
 .creator-area {
@@ -76,7 +85,7 @@
 }
 
 .my-page-main {
-  height: calc(100vh - 75px);
+  height: calc(100％ - 75px);
   background-color: #fdf2e9;
 }
 
@@ -87,7 +96,7 @@
 }
 
 .creator-input-area {
-  height: 450px;
+  height: 100%;
   width: 80vmin;
   background-color: white;
 }

@@ -8,7 +8,7 @@
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">お知らせ</a>
     </li>
-      <% if @creator.exists?(user_id: current_user.id) %>
+      <% if @creators.exists?(user_id: current_user.id) %>
         <li class="nav-item">
         <%= link_to "マイアトリエ",  "/creators/#{current_user.id}", class: "nav-link" %>
         </li>

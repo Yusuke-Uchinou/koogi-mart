@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_083552) do
 
   create_table "creators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "creator_name", null: false
+    t.string "creator_short_text"
     t.text "creator_text", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
