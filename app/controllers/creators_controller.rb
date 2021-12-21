@@ -18,6 +18,11 @@ class CreatorsController < ApplicationController
     end
   end
 
+  def show
+    @creator = Creator.find(params[:id])
+  end
+
+
   private
   def creator_params
     params.require(:creator).permit(:creator_name, :creator_text).merge(user_id: current_user.id)

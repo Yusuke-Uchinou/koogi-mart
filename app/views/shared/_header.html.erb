@@ -16,7 +16,9 @@
       </label>
 
       <input type="checkbox" class="btn-check" id="btncheck2">
-      <label class="btn btn-outline-primary" for="btncheck2">クリエイターズページ</label>
+      <label class="btn btn-outline-primary" for="btncheck2">
+      <%= link_to "マイアトリエ",  "/creators/#{current_user.id}" %>
+      </label>
 
       <input type="checkbox" class="btn-check" id="btncheck2">
       <label class="btn btn-outline-primary" for="btncheck2">
