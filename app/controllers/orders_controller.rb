@@ -21,6 +21,6 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:order_name, :order_text, :order_price_min, :order_price_max, :genre_id, :day_min, :day_max, {images: []}).merge(creator_id: @creator.id)
+    params.require(:order).permit(:order_name, :order_text, :order_price_min, :order_price_max, :genre_id, :day_min, :day_max, :main_order_image, {order_images: []}).merge(creator_id: @creator.id)
   end
 end
