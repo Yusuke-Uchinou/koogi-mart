@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @creators = Creator.all
     @nickname = current_user.nickname
+    @current_creator = Creator.find_by(user: current_user.id)
   end
 
   def edit
