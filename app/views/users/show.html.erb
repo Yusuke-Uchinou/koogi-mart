@@ -10,7 +10,7 @@
     </li>
       <% if @creators.exists?(user_id: current_user.id) %>
         <li class="nav-item">
-        <%= link_to "マイアトリエ",  "/creators/#{current_user.id}", class: "nav-link" %>
+        <%= link_to "マイアトリエ",  "/creators/#{@current_creator.id}", class: "nav-link" %>
         </li>
       <% else %>
         <li class="nav-item">

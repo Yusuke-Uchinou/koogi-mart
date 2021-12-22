@@ -6,8 +6,8 @@
 <div class="my-page-main p-2">
   <div class="creator-input-area my-5 mx-auto p-4">
     <div class="container">
-      <h4 class="mb-3">クリエイター登録</h4>
-      <%= form_with model: @creator, url: "/creators", method: :post, local: true do |f| %>
+      <h4 class="mb-3">クリエイター情報編集</h4>
+      <%= form_with model: @creator, url: creator_path(@creator.id), method: :patch, local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
         <div class="row g-3">
           <div class="col-sm-12">
