@@ -44,6 +44,6 @@ class CreatorsController < ApplicationController
 
   private
   def creator_params
-    params.require(:creator).permit(:creator_name, :creator_short_text, :creator_text).merge(user_id: current_user.id)
+    params.require(:creator).permit(:creator_name, :creator_short_text, :creator_text, :image ).merge(user_id: current_user.id)
   end
 end

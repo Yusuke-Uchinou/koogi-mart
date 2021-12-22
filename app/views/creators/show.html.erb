@@ -27,7 +27,7 @@
   </ul>
   <div class="creator-intro d-flex flex-wrap justify-content-center">
     <div class="creator-img">
-      <img class="m-4" src="https://picsum.photos/350/300">
+      <%= image_tag @creator.image.variant(resize: '400x400'), class:"m-4" if @creator.image.attached? %>
     </div>
     <div class="intro-text">
       <p><%= @creator.creator_text%></p>

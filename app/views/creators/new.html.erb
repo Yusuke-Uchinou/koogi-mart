@@ -23,8 +23,8 @@
             <%= f.text_area :creator_text, class: "form-control creator-text" %>
           </div>
           <div class="col-md-12">
-            <label for="formFile" class="form-label">アトリエイメージ</label>
-            <input class="form-control" type="file" id="formFile">
+            <label for="formFile" class="form-label">アトリエイメージ<span class="text-muted">(任意・１枚まで)</span></label>
+            <%= f.file_field :image, class:"form-control" %>
           </div>
         </div>
         <hr class="my-4">
