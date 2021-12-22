@@ -29,6 +29,12 @@
   text-align: right;
 }
 
+.card-img{
+  text-align: center;
+  width: auto;
+  height: auto;
+}
+
 .card-text {
   white-space: pre-wrap;
   text-align: left;
@@ -42,8 +48,8 @@
 
 .creator-card{
   flex: none;
-  width: 400px;
-  height: 100%;
+  width: 350px;
+  height: 500px;
 }
 
 .creator-area {
@@ -111,11 +117,18 @@
 
 
 .creator-img {
-  width: 80vmin;
+  width: auto;
+  height: auto;
 }
 
 .intro-text {
   white-space: pre-wrap;
-  min-width: 400px;
-  width: 60vmin;
+  width: 100%;
+  max-width: 80vh;
+}
+
+.order-input-area {
+  height: 100%;
+  width: 100vmin;
+  background-color: white;
 }

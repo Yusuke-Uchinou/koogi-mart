@@ -24,8 +24,10 @@
 </div>
 <ul class="content-cards container">
   <% @creators.each do |n| %>
-    <li class="card col m-3 creator-card">
-      <img src="https://picsum.photos/400/300" class="card-img-top img-fluid" alt="sample">
+    <li class="card col m-3 creator-card">      
+      <div class="card-img">
+        <%= image_tag n.image.variant(resize: '300x300'), class:"my-4 img-fluid " if n.image.attached? %>
+      </div>
       <div class="card-body">
         <h5 class="card-title"><%= n.creator_name %></h5>
         <p class="card-text"><%= n.creator_short_text %></p>

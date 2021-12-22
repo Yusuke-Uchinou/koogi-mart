@@ -1,11 +1,20 @@
 <div class="title-contents">
   <div class="header-logo m-3">
+  <%= link_to root_path, class: "text-decoration-none link-dark" do %>
     <h1>Koogi<br>mart</h1>
+  <% end %>
   </div>
 </div>
 <div class="my-page-header position-relative">
-  <div class="avatar-area d-flex align-items-center position-absolute top-50 start-0 translate-middle-y">
+  <div class="avatar-area d-flex pt-3 justify-content-between">
     <h4 class="ms-3"><%= @creator.creator_name %><span class="fs-5">さんの</span>アトリエ</h4>
+    <div class="btn-group" role="group" aria-label="Basic outlined example">
+      <% if user_signed_in? && current_user.id == @creator.user_id %>
+        <%= link_to "オーダー作成", new_order_path, class: "btn btn-outline-success" %>
+        <button type="button" class="btn btn-outline-success">作品出品</button>
+        <%= link_to "アトリエ編集", edit_creator_path, class: "btn btn-outline-success" %>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="container pt-5">
@@ -19,18 +28,15 @@
     <li class="nav-item col">
       <a class="nav-link" href="#">メニュー</a>
     </li>
-    <% if user_signed_in? && current_user.id == @creator.user_id %>
-      <li class="nav-item col">
-        <%= link_to "アトリエ編集", edit_creator_path, class:"nav-link" %>
-      </li>
-    <% end %>
   </ul>
-  <div class="creator-intro d-flex flex-wrap justify-content-center">
-    <div class="creator-img">
-      <%= image_tag @creator.image.variant(resize: '400x400'), class:"m-4" if @creator.image.attached? %>
+  <div class="creator-intro d-flex flex-wrap justify-content-around conteiner">
+    <div class="creator-img me-5 col-3">
+      <%= image_tag @creator.image.variant(resize: '400x400'), class:"m-4 image-fluid" if @creator.image.attached? %>
     </div>
-    <div class="intro-text">
-      <p><%= @creator.creator_text%></p>
+    <div>
+      <div class="intro-text m-4 col-9">
+        <p><%= @creator.creator_text%></p>
+      </div>
     </div>
   </div>
   <div>
