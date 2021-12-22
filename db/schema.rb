@@ -46,10 +46,11 @@ ActiveRecord::Schema.define(version: 2021_12_22_105532) do
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "order_name", null: false
     t.text "order_text", null: false
-    t.integer "order_price", null: false
+    t.integer "order_price_min", null: false
     t.integer "order_price_max", null: false
     t.integer "genre_id", null: false
-    t.integer "day", null: false
+    t.integer "day_min", null: false
+    t.integer "day_max", null: false
     t.bigint "creator_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
