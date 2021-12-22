@@ -12,33 +12,23 @@
   <div class="btn-group btn-groupme-3 me-2" role="group" aria-label="Basic checkbox toggle button group">
     <% if user_signed_in? %>
       <input type="checkbox" class="btn-check" id="btncheck1">
-      <label class="btn btn-outline-primary" for="btncheck1">
-        <%= link_to current_user.nickname, "/users/#{current_user.id}" %>
-      </label>
+      <%= link_to current_user.nickname, "/users/#{current_user.id}", class: "btn btn-outline-success" %>
       <% if @creators.exists?(user_id: current_user.id) %>
         <input type="checkbox" class="btn-check" id="btncheck2">
-        <label class="btn btn-outline-primary" for="btncheck2">
-        <%= link_to "マイアトリエ",  "/creators/#{@current_creator.id}" %>
-        </label>
+        <%= link_to "マイアトリエ",  "/creators/#{@current_creator.id}", class: "btn btn-outline-success" %>
       <% else %>
         <input type="checkbox" class="btn-check" id="btncheck2">
-        <label class="btn btn-outline-primary" for="btncheck2">
-        <%= link_to "クリエイター登録",  new_creator_path %>
-        </label>
+        <%= link_to "クリエイター登録",  new_creator_path, class: "btn btn-outline-success" %>
       <% end %>
       <input type="checkbox" class="btn-check" id="btncheck2">
-      <label class="btn btn-outline-primary" for="btncheck2">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-success" %>
       </label>
     <% else %>
       <input type="checkbox" class="btn-check" id="btncheck1">
-      <label class="btn btn-outline-primary" for="btncheck1">
-        <%= link_to "新規登録", new_user_registration_path, class: "sign-up" %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-success" %>
       </label>
       <input type="checkbox" class="btn-check" id="btncheck2">
-      <label class="btn btn-outline-primary" for="btncheck2">
-        <%= link_to "ログイン", new_user_session_path, class: "log-in" %>
-      </label>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-success" %>
     <% end %>
   </div>
   </div>

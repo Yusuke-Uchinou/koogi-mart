@@ -117,11 +117,18 @@
 
 
 .creator-img {
-  width: 80vmin;
+  width: auto;
+  height: auto;
 }
 
 .intro-text {
   white-space: pre-wrap;
-  min-width: 400px;
-  width: 60vmin;
+  width: 100%;
+  max-width: 80vh;
+}
+
+.order-input-area {
+  height: 100%;
+  width: 150vmin;
+  background-color: white;
 }
