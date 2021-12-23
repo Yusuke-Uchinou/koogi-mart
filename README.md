@@ -1,3 +1,8 @@
+# アプリケーション概要
+
+Koogi-martはハンドメイドクリエイター向けアプリケーションです。
+ユーザーはオンライン上で自分のアトリエを持つことができ、自身の作品を展示し販売、または作品の制作依頼の募集をすることができます。
+
 # テーブル設計
 
 ## usersテーブル
@@ -38,11 +43,12 @@
 
 ## creatorsテーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| creator_name | string     | null: false                    |
-| creator_text | text       | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| creator_name       | string     | null: false                    |
+| creator_short_text | string     | null: false                    |
+| creator_text       | text       | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### association
 
@@ -53,14 +59,15 @@
 
 ## ordersテーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| order_name   | string     | null: false                    |
-| order_text   | text       | null: false                    |
-| order_price  | integer    | null: false                    |
-| genre_id     | integer    | null: false                    |
-| day          | integer    | null: false                    |
-| creator      | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| order_name       | string     | null: false                    |
+| order_text       | text       | null: false                    |
+| order_price_min  | integer    | null: false                    |
+| genre_id         | integer    | null: false                    |
+| day_min          | integer    | null: false                    |
+| day_max          | integer    | null: false                    |
+| creator          | references | null: false, foreign_key: true |
 
 ### association
 
@@ -75,11 +82,11 @@
 | ------------ | ---------- | ------------------------------ |
 | option_name  | string     | null: false                    |
 | option_price | integer    | null: false                    |
-| project      | references | null: false, foreign_key: true |
+| order        | references | null: false, foreign_key: true |
 
 ### association
 
-- belongs_to :project
+- belongs_to :order
 
 
 ## roomsテーブル
@@ -87,11 +94,11 @@
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | user       | references | null: false, foreign_key: true |
-| project    | references | null: false, foreign_key: true |
+| order      | references | null: false, foreign_key: true |
 
 ### association
 
-- belongs_to :project
+- belongs_to :order
 - belongs_to :user
 - has_many :messages
 
@@ -106,7 +113,7 @@
 
 ### association
 
-- belongs_to :project
+- belongs_to :room
 - belongs_to :user
 - has_many :messages
 
