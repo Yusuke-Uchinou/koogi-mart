@@ -43,6 +43,10 @@ class CreatorsController < ApplicationController
     end
   end
 
+  def order_menu
+    @creator = Creator.find(params[:id])
+    @orders = Order.where(creator_id: @creator.id)
+  end
   private
   def creator_params
     params.require(:creator).permit(:creator_name, :creator_short_text, :creator_text, :image ).merge(user_id: current_user.id)
