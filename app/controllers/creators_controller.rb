@@ -1,15 +1,15 @@
 class CreatorsController < ApplicationController
   def top
     @creators = Creator.all
-    @new_creators = Creator.limit(4).order(:created_at)
-    @new_orders = Order.limit(6).order(:created_at)
+    @new_creators = Creator.limit(4).order('created_at DESC')
+    @new_orders = Order.limit(6).order('created_at DESC')
     if user_signed_in?
       @current_creator = Creator.find_by(user: current_user.id)
     end
   end
 
   def index
-    @creators = Creator.all
+    @creators = Creator.all.order('created_at DESC')
     @current_creator = Creator.find_by(user: current_user.id)
   end
 
@@ -45,7 +45,7 @@ class CreatorsController < ApplicationController
 
   def order_menu
     @creator = Creator.find(params[:id])
-    @orders = Order.where(creator_id: @creator.id)
+    @orders = Order.where(creator_id: @creator.id).order('created_at DESC')
   end
   private
   def creator_params

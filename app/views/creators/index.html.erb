@@ -28,9 +28,9 @@
       <div class="card-img">
         <%= image_tag n.image.variant(resize: '300x300'), class:"my-4 img-fluid " if n.image.attached? %>
       </div>
-      <div class="card-body">
+      <div class="card-body card-flame">
         <h5 class="card-title"><%= n.creator_name %></h5>
-        <p class="card-text"><%= n.creator_short_text %></p>
+        <p class="card-in-text"><%= n.creator_short_text %></p>
         <%= link_to "詳細", "/creators/#{n.id}", class: "btn btn-primary" %>
       </div>
     </li>
