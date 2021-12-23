@@ -17,27 +17,20 @@
     </div>
   </div>
 </div>
-<div class="container pt-5">
-  <ul class="nav nav-tabs row">
-    <li class="nav-item col">
-      <a class="nav-link active" href="#">紹介</a>
-    </li>
-    <li class="nav-item col">
-      <a class="nav-link" href="#">作品展示</a>
-    </li>
-    <li class="nav-item col">
-      <%= link_to "メニュー", order_menu_creator_path(@creator.id), class: "nav-link" %>
-    </li>
-  </ul>
-  <div class="creator-intro d-flex flex-wrap justify-content-around conteiner">
-    <div class="creator-img me-5 col-3">
-      <%= image_tag @creator.image.variant(resize: '400x400'), class:"m-4 image-fluid" if @creator.image.attached? %>
-    </div>
-    <div>
-      <div class="intro-text m-4 col-9">
-        <p><%= @creator.creator_text%></p>
+<ul class="content-cards container">
+  <% @orders.each do |n| %>
+    <li class="card col m-3 item-card">      
+      <div class="card-img">
+        <%= image_tag n.main_order_image, class:"my-4 img-fluid " if n.main_order_image.attached? %>
       </div>
-    </div>
-  </div>
-  <div>
-</div>
+      <div class="card-body pe-4">
+        <h4 class="card-title pb-3"><%= n.order_name %></h4>
+        <h6 class="pb-3"><%= n.creator.creator_name %></h6>
+        <h6 class="pb-3">￥<%= n.order_price_min %> ~ ￥<%= n.order_price_max %></h6>
+        <%= link_to "詳細", "#", class: "btn btn-primary" %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+

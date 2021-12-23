@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     collection do
       get 'top'
     end
+    member do
+      get 'order_menu'
+    end
   end
   resources :users, only: [:show, :edit, :update]
   resources :orders, only: [:index, :new, :create]
