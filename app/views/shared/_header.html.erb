@@ -21,7 +21,7 @@
         <%= link_to "クリエイター登録",  new_creator_path, class: "btn btn-outline-success" %>
       <% end %>
       <input type="checkbox" class="btn-check" id="btncheck2">
-      <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-success" %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-success" %>
       </label>
     <% else %>
       <input type="checkbox" class="btn-check" id="btncheck1">

@@ -2,6 +2,7 @@ class CreatorsController < ApplicationController
   def top
     @creators = Creator.all
     @new_creators = Creator.limit(4).order(:created_at)
+    @new_orders = Order.limit(6).order(:created_at)
     if user_signed_in?
       @current_creator = Creator.find_by(user: current_user.id)
     end
