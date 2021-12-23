@@ -1,5 +1,7 @@
 class Order < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :creator
+  belongs_to :genre
   has_one_attached :main_order_image
   has_many_attached :order_images
 

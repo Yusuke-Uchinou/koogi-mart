@@ -21,7 +21,7 @@
   flex-wrap: wrap;
 }
 
-.card-body {
+.card-flame {
   text-align: right;
 }
 
@@ -31,7 +31,7 @@
   height: auto;
 }
 
-.card-text {
+.card-in-text {
   white-space: pre-wrap;
   text-align: left;
   overflow: hidden;
@@ -129,4 +129,25 @@
   height: 100%;
   width: 100vmin;
   background-color: white;
+}
+
+.order-border {
+  border-bottom:5px double #f4c1bd;
+}
+
+.order-main {
+  white-space: pre-wrap;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.order-creator-card {
+  flex: none;
+  width: 400px;
+  height: 100%;
+}
+
+.order-info {
+  width: 400px;
+  height: 100%;
 }

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
-    @creators = Creator.all
+    @creators = Creator.all.order('created_at DESC')
     @orders = Order.all
     if user_signed_in?
       @current_creator = Creator.find_by(user: current_user.id)
@@ -21,6 +21,11 @@ class OrdersController < ApplicationController
     else
       render new_order_path
     end
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @creator = Creator.find(@order.creator_id)
   end
 
   private

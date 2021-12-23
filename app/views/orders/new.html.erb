@@ -44,9 +44,9 @@
             <%= f.file_field :main_order_image, class:"form-control" %>
           <div class="col-md-12">
             <label for="formFile" class="form-label">サブオーダーイメージ<span class="text-muted">(任意・3枚まで)</span></label>
-            <%= f.file_field :order_images, class:"form-control", multiple: true, name: 'post[images][]', data: {index: 0} %>
-            <%= f.file_field :order_images, class:"form-control", multiple: true, name: 'post[images][]', data: {index: 1} %>
-            <%= f.file_field :order_images, class:"form-control", multiple: true, name: 'post[images][]', data: {index: 2} %>
+            <%= f.file_field :order_images, class:"form-control", multiple: true %>
+            <%= f.file_field :order_images, class:"form-control", multiple: true %>
+            <%= f.file_field :order_images, class:"form-control", multiple: true %>
           </div>
         </div>
         <hr class="my-4">
