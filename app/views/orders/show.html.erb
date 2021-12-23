@@ -50,7 +50,14 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to "見積依頼を行う", "#", class:"w-50 btn btn-primary btn-lg m-3"%>
+      <% if user_signed_in? && @order.creator.user_id == current_user.id %>
+        <div class="btn-group btn-groupme-3 m-4" role="group">
+          <%= link_to "オーダー編集", edit_order_path(@order.id), class:"btn btn-outline-success btn-lg"%>
+          <%= link_to "オーダー削除", "#", class:"btn btn-outline-success btn-lg"%>
+        </div>
+      <% elsif  user_signed_in? %>
+        <%= link_to "見積依頼を行う", "#", class:"w-50 btn btn-outline-success btn-lg m-3"%>
+      <% end %>
     </div>
   <div class="card m-3 order-creator-card">
     <div class="card-header">

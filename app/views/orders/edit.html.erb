@@ -1,0 +1,60 @@
+<div class="title-contents">
+  <div class="header-logo m-3">
+  <%= link_to root_path, class: "text-decoration-none link-dark" do %>
+    <h1>Koogi<br>mart</h1>
+  <% end %>
+  </div>
+</div>
+<div class="my-page-main p-2">
+  <div class="order-input-area my-5 mx-auto p-4">
+    <div class="container">
+      <h4 class="mb-3">オーダーメニュー編集</h4>
+      <%= form_with model: @order, url: "/orders", method: :post, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+        <div class="row g-3">
+          <div class="col-sm-12">
+            <label class="form-label">オーダータイトル<span class="text-muted">(必須)</span></label>
+            <%= f.text_field :order_name, class: "form-control", maxlength:"40", placeholder:"例 アクセサリー作成" %>
+          </div>
+          <div class="creator-short-text col-12 mb-3">
+            <label class="form-label">オーダー説明<span class="text-muted">(必須)</span></label>
+            <%= f.text_area :order_text, class: "form-control" %>
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">目安金額(最低)<span class="text-muted">(必須・￥)</span></label>
+            <%= f.text_field :order_price_min, class: "form-control" %>
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">目安金額(最高)<span class="text-muted">(必須・￥)</span></label>
+            <%= f.text_field :order_price_max, class: "form-control" %>
+          </div>
+          <div class="mb-3 col-12">
+            <%= f.collection_select(:genre_id, Genre.all, :id, :name, {include_blank: "---"}, {class:"genre-select-box", id:"order-genre"}) %>
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">作業日数目安(最低)<span class="text-muted">(必須・日数)</span></label>
+            <%= f.text_field :day_min, class: "form-control" %>
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">作業日数目安(最高)<span class="text-muted">(必須・日数)</span></label>
+            <%= f.text_field :day_max, class: "form-control" %>
+          </div>
+          <div class="col-md-12">
+            <label for="formFile" class="form-label">メインオーダーイメージ<span class="text-muted">(必須・１枚まで)</span></label>
+            <%= f.file_field :main_order_image, class:"form-control" %>
+          <div class="col-md-12">
+            <label for="formFile" class="form-label">サブオーダーイメージ<span class="text-muted">(任意・3枚まで)</span></label>
+            <%= f.file_field :order_images, class:"form-control", multiple: true %>
+            <%= f.file_field :order_images, class:"form-control", multiple: true %>
+            <%= f.file_field :order_images, class:"form-control", multiple: true %>
+          </div>
+        </div>
+        <hr class="my-4">
+        <%= f.submit "Confirm", class:"w-100 btn btn-primary btn-lg"%>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= link_to "トップページへ戻る", root_path%>
+  </div>
+</div>

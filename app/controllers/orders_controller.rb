@@ -23,6 +23,21 @@ class OrdersController < ApplicationController
     end
   end
 
+  def edit
+    @creator = Creator.find_by(user: current_user.id)
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    @creator = Creator.find_by(user: current_user.id)
+    @order = Order.find(order_params)
+    if @order.save
+      redirect_to root_path
+    else
+      render new_order_path
+    end
+  end
+
   def show
     @order = Order.find(params[:id])
     @creator = Creator.find(@order.creator_id)
