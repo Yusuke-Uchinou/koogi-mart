@@ -23,6 +23,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+    @order = Order.find(params[:id])
+    @creator = Creator.find(@order.creator_id)
+  end
+
   def edit
     @creator = Creator.find_by(user: current_user.id)
     @order = Order.find(params[:id])
@@ -30,17 +35,18 @@ class OrdersController < ApplicationController
 
   def update
     @creator = Creator.find_by(user: current_user.id)
-    @order = Order.find(order_params)
-    if @order.save
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
       redirect_to root_path
     else
       render new_order_path
     end
   end
 
-  def show
-    @order = Order.find(params[:id])
-    @creator = Creator.find(@order.creator_id)
+  def destroy
+    order = Order.find(params[:id])
+    order.destroy
+    redirect_to root_path
   end
 
   private
