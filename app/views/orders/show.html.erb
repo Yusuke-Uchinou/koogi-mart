@@ -56,7 +56,11 @@
           <%= link_to "オーダー削除", "/orders/#{@order.id}", method: :delete, class:"btn btn-outline-success btn-lg"%>
         </div>
       <% elsif  user_signed_in? %>
-        <%= link_to "見積依頼を行う", "#", class:"w-50 btn btn-outline-success btn-lg m-3"%>
+        <div>
+          <%= link_to order_rooms_path(@order.id), class:"w-60 btn btn-outline-success btn-lg m-3 pt-3" do%>
+          <p>オーダー依頼を行う</p>
+          <% end %>
+        </div>
       <% end %>
     </div>
   <div class="card m-3 order-creator-card">

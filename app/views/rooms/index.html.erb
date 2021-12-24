@@ -1,0 +1,65 @@
+<div class="title-contents">
+  <div class="header-logo m-3">
+  <%= link_to root_path, class: "text-decoration-none link-dark" do %>
+    <h1>Koogi<br>mart</h1>
+  <% end %>
+  </div>
+</div>
+<div class="conteiner m-3">
+  <div class="row g-3">
+    <div class="order-border col-12 my-4">
+    </div>
+    <h2 class="text-center">オーダーチャット作成確認</h2>
+    <div class="order-border2 col-12 my-4">
+    </div>
+  </div>
+</div>
+<div class="d-flex flex-wrap justify-content-around">
+  <div class="py-2">
+  <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light rounded-3">
+          <h2>オーダー内容</h2>
+          <%= image_tag @order.main_order_image.variant(resize: '300x300'), class:"m-4 image-fluid mx-auto"%>
+            <table>
+              <tbody>
+                <tr>
+                  <h4><%= @order.order_name %></h4>
+                </tr>
+                <tr class="pt-4">
+                  <th>ジャンル</th>
+                  <td><%= @order.genre.name %></td>
+                </tr>
+                <tr>
+                  <th>予算</th>
+                  <td>￥<%= @order.order_price_min %> ~ ￥<%= @order.order_price_max %></td>
+                </tr>
+                <tr>
+                  <th>日数</th>
+                  <td><%= @order.day_min %>日 ~<%= @order.day_max %>日</td>
+                </tr>
+              </tbody>
+            </table>
+            <%= link_to "詳細", "/orders/#{@order.id}", class: "btn btn-primary mt-3" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light rounded-3">
+          <h2>クリエイター情報<h2>
+          <%= image_tag @creator.image.variant(resize: '300x300'), class:"m-4 image-fluid mx-auto"%>
+          <h2><%= @creator.creator_name%></h2>
+          <p><%= @creator.creator_short_text%></p>
+          <%= link_to "詳細", "/creators/#{@creator.id}", class: "btn btn-primary mt-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2 class="m-5 text-center">上記の内容でチャットルームを<br>作成します</h2>
+  <%= form_with model: @room, url: "/orders/#{@order.id}/rooms", local: true do |f| %>
+  <%= f.hidden_field :order_id, value: @order.id %>
+  <%= f.submit %>
+  <% end %>
+</div>
