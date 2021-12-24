@@ -135,6 +135,10 @@
   border-bottom:5px double #f4c1bd;
 }
 
+.order-border2 {
+  border-top: 7px solid #f6f098;
+}
+
 .order-main {
   white-space: pre-wrap;
   min-width: 300px;
@@ -150,4 +154,29 @@
 .order-info {
   width: 400px;
   height: 100%;
+}
+
+.order-chat-info {
+  width: 350px;
+  height: 80vh;
+}
+
+.chat-main {
+  width: calc(100vw - 400px);
+  min-width: 400px;
+}
+
+.chat-area {
+  background-color: #fcf2c5;
+  width: auto;
+  height: calc(100vh - 250px)
+}
+
+.form {
+  background-color: #c0bdd9;
+  height: 100px;
+}
+
+.message-box {
+  border-bottom: 1px solid #f0dad6;
 }

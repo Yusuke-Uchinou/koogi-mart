@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   belongs_to :genre
   has_one_attached :main_order_image
   has_many_attached :order_images
+  has_many :rooms
 
   with_options presence: true do
     validates :order_name
