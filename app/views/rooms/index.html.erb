@@ -57,9 +57,11 @@
 </div>
 
 <div>
-  <h2 class="m-5 text-center">上記の内容でチャットルームを<br>作成します</h2>
+  <h2 class="mt-5 mb-3 text-center">上記の内容でチャットルームを<br>作成します</h2>
   <%= form_with model: @room, url: "/orders/#{@order.id}/rooms", local: true do |f| %>
   <%= f.hidden_field :order_id, value: @order.id %>
-  <%= f.submit %>
+  <div class="text-center">
+    <%= f.submit class:"w-60 btn btn-outline-success btn-lg mb-4"%>
+  </div>
   <% end %>
 </div>
