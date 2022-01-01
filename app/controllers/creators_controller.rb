@@ -10,7 +10,9 @@ class CreatorsController < ApplicationController
 
   def index
     @creators = Creator.all.order('created_at DESC')
-    @current_creator = Creator.find_by(user: current_user.id)
+    if user_signed_in?
+      @current_creator = Creator.find_by(user: current_user.id)
+    end
   end
 
   def new
