@@ -9,4 +9,5 @@ class User < ApplicationRecord
             format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: 'must include both numbers and letters' }
 
   has_one :creator
+  has_many :rooms
 end

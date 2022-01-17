@@ -11,6 +11,7 @@ class RoomsController < ApplicationController
 
   def create
     @order = Order.find(params[:order_id])
+    binding.pry
     @room = Room.new(room_params)
     if @room.save
       redirect_to "/orders/#{params[:order_id]}/rooms/#{@room.id}"
@@ -28,6 +29,9 @@ class RoomsController < ApplicationController
 
   private
   def room_params
-    params.require(:room).permit(:order_id).merge(user_id: current_user.id)
+    @order = Order.find(params[:order_id])
+    @creator = Creator.find(@order.creator_id)
+    @owner = User.find(@creator.user_id)
+    params.require(:room).permit(:order_id).merge(customer_id: current_user.id, owner_id: @owner.id)
   end
 end
