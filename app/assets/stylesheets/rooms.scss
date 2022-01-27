@@ -1,3 +1,28 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.order-chat-info {
+  width: 350px;
+  height: 80vh;
+}
+
+.chat-main {
+  width: calc(100vw - 400px);
+  min-width: 400px;
+}
+
+.chat-area {
+  background-color: #fcf2c5;
+  width: auto;
+  height: calc(100vh - 250px);
+  overflow: scroll;
+}
+
+.form {
+  background-color: #c0bdd9;
+  height: 100px;
+}
+
+.message-box {
+  border-bottom: 1px solid #f0dad6;
+}

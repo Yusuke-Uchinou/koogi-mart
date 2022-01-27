@@ -11,7 +11,6 @@ class RoomsController < ApplicationController
 
   def create
     @order = Order.find(params[:order_id])
-    binding.pry
     @room = Room.new(room_params)
     if @room.save
       redirect_to "/orders/#{params[:order_id]}/rooms/#{@room.id}"
@@ -25,6 +24,8 @@ class RoomsController < ApplicationController
     @order = Order.find(@room.order_id)
     @creator = Creator.find(@order.creator_id)
     @owner = User.find(@creator.user_id)
+    @messages = @room.messages.includes(:user)
+    @message = Message.new
   end
 
   private

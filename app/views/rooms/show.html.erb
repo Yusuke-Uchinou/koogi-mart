@@ -14,41 +14,30 @@
 <div class="d-flex justify-content-around">
   <div class="chat-main">
     <div class="chat-area p-3">
+      <% @room.messages.each do |m| %>
       <div class="message-box ps-4 mb-2">
         <div class="d-flex">
           <div class="message-border">
           </div>
           <div class="message-name fs-5">
-            <p>Tom</p>
+            <p><%= m.user.nickname %></p>
           </div>
           <div class="message-date fs-5 ps-5">
-            <p>2021.12.24.10:25</p>
+            <p><%= m.created_at %></p>
           </div>
         </div>
         <div class="message-main fs-5 ps-2">
-          <p>Hello<p>
+          <p><%= m.comment %><p>
         </div>
       </div>
-      <div class="message-box ps-4">
-        <div class="d-flex">
-          <div class="message-name fs-5">
-            <p>Creator</p>
-          </div>
-          <div class="message-date fs-5 ps-5">
-            <p>2021.12.24.11:22</p>
-          </div>
-        </div>
-        <div class="message-main fs-5 ps-2">
-          <p>hello! Thank you for watching my order.<p>
-        </div>
-      </div>
+      <% end %>
     </div>
     <div class="form p-3">
       <div class="container pt-3">
-        <%= form_with local: true do |f| %>
+        <%= form_with model: [@order, @room, @message], local: true do |f| %>
           <div class="row g-3">
             <div class="mb-3 col-10">
-              <%= f.text_field "#", class: "form-control", placeholder: "Input Message" %>
+              <%= f.text_area :comment, class: "form-control", placeholder: "Input Message" %>
             </div>
             <div class="mb-3 col-2">
               <%= f.submit "Submit", class:"btn btn-primary btn-lg"%>
