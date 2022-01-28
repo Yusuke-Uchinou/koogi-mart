@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
-  has_many :users
+  belongs_to :user
   belongs_to :order
+  belongs_to :creator
   has_many :messages
 end

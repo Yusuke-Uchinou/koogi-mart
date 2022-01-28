@@ -1,0 +1,67 @@
+<div class="my-page-header position-relative">
+  <div class="avatar-area d-flex align-items-center position-absolute top-50 start-0 translate-middle-y">
+    <img class="rounded-circle ms-2" src="https://picsum.photos/50/50">
+    <h3 class="ms-3"><%= @nickname %></h3>
+  </div>
+  <ul class="nav justify-content-end">
+    <div>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">お知らせ</a>
+    </li>
+      <% if @creators.exists?(user_id: current_user.id) %>
+        <li class="nav-item">
+        <%= link_to "マイアトリエ", "/creators/#{@current_creator.id}", class: "nav-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+        <%= link_to "クリエイター登録", new_creator_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </div>
+    <div>
+    <li class="nav-item">
+      <a class="nav-link" href="#">チャット一覧</a>
+    </li>
+    <li class="nav-item">
+      <%= link_to "編集", edit_user_path, class:"nav-link"%>
+    </li>
+    </div>
+  </ul>
+</div>
+
+<div class="my-page-main p-2">
+  <div class="rooms-main-area my-5 mx-auto p-5">
+    <h4 class="p-3">チャット一覧</h4>
+    <div class="container">
+      <div class="p-3 border-bottom pb-3 ">
+        <h5 class="border-bottom pb-3">見積もり依頼中のチャット</h5>
+        <% if @rooms.exists?(user_id: current_user.id)%>
+          <% @rooms.each do |r|%>
+            <div class="border-bottom pt-2">
+              <%= link_to "#{r.order.order_name}","/orders/#{r.order.id}/rooms/#{r.id}"%>
+              <p>クリエイター名：<%= r.creator.creator_name%></p>
+              <p><%= r.created_at %></p>
+            </div>
+          <% end %>
+        <% else %>
+          <h5 class="p-3 text-center text-wrap text-muted">現在、見積もり依頼中のチャットは存在しません</h5>
+        <% end %>
+      </div>
+      <% if @creators.exists?(user_id: current_user.id)%>
+      <div class="mt-3 p-3 border-bottom pb-3 ">
+        <h5 class="border-bottom pb-3">マイアトリエに依頼されたチャット</h5>
+          <% @owner_rooms.each do |r|%>
+            <div class="border-bottom pt-2">
+              <%= link_to "#{r.order.order_name}","/orders/#{r.order.id}/rooms/#{r.id}"%>
+              <p>依頼ユーザー名：<%= r.user.nickname%></p>
+              <p><%= r.created_at %></p>
+            </div>
+          <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="float-end me-3">
+    <%= link_to "トップページへ戻る", root_path%>
+  </div>
+</div>

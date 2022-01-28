@@ -23,7 +23,6 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @order = Order.find(@room.order_id)
     @creator = Creator.find(@order.creator_id)
-    @owner = User.find(@creator.user_id)
     @messages = @room.messages.includes(:user)
     @message = Message.new
   end
@@ -32,7 +31,6 @@ class RoomsController < ApplicationController
   def room_params
     @order = Order.find(params[:order_id])
     @creator = Creator.find(@order.creator_id)
-    @owner = User.find(@creator.user_id)
-    params.require(:room).permit(:order_id).merge(customer_id: current_user.id, owner_id: @owner.id)
+    params.require(:room).permit(:order_id).merge(user_id: current_user.id, creator_id: @creator.id)
   end
 end

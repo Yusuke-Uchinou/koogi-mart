@@ -33,16 +33,6 @@ ActiveRecord::Schema.define(version: 2022_01_17_075711) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "comment_text", null: false
-    t.bigint "room_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_comments_on_room_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
   create_table "creators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "creator_name", null: false
     t.string "creator_short_text"
@@ -78,14 +68,14 @@ ActiveRecord::Schema.define(version: 2022_01_17_075711) do
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "customer_id", null: false
+    t.bigint "user_id", null: false
     t.bigint "order_id", null: false
-    t.bigint "owner_id", null: false
+    t.bigint "creator_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_rooms_on_customer_id"
+    t.index ["creator_id"], name: "index_rooms_on_creator_id"
     t.index ["order_id"], name: "index_rooms_on_order_id"
-    t.index ["owner_id"], name: "index_rooms_on_owner_id"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -102,11 +92,11 @@ ActiveRecord::Schema.define(version: 2022_01_17_075711) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "rooms"
-  add_foreign_key "comments", "users"
   add_foreign_key "creators", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "orders", "creators"
+  add_foreign_key "rooms", "creators"
   add_foreign_key "rooms", "orders"
+  add_foreign_key "rooms", "users"
 end
