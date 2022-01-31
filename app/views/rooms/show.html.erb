@@ -19,9 +19,15 @@
         <div class="d-flex">
           <div class="message-border">
           </div>
-          <div class="message-name fs-5">
-            <p><%= m.user.nickname %></p>
-          </div>
+          <% if m.user.id == @creator.user_id%>
+            <div class="message-name fs-5">
+              <p><%= @creator.creator_name %></p>
+            </div>
+          <% else %>
+            <div class="message-name fs-5">
+             <p><%= m.user.nickname %></p>
+            </div>
+          <% end %>
           <div class="message-date fs-5 ps-5">
             <p><%= m.created_at %></p>
           </div>
@@ -32,11 +38,11 @@
       </div>
       <% end %>
     </div>
-    <div class="form p-3">
-      <div class="container pt-3">
+    <div class="form">
+      <div class="container">
         <%= form_with model: [@order, @room, @message], local: true do |f| %>
           <div class="row g-3">
-            <div class="mb-3 col-10">
+            <div class="mb-3 col-9">
               <%= f.text_area :comment, class: "form-control", placeholder: "Input Message" %>
             </div>
             <div class="mb-3 col-2">
@@ -50,28 +56,30 @@
   </div>
   <div class="order-chat-info">
     <div>
-      <div class="p-5 bg-light rounded-3 mb-2">
-        <%= image_tag @order.main_order_image.variant(resize: '200x200'), class:"m-4 image-fluid mx-auto"%>
-          <table>
-            <tbody>
-              <tr>
-                <h4><%= @order.order_name %></h4>
-              </tr>
-              <tr class="pt-4">
-                <th>ジャンル</th>
-                <td><%= @order.genre.name %></td>
-              </tr>
-              <tr>
-                <th>予算</th>
-                <td>￥<%= @order.order_price_min %> ~ ￥<%= @order.order_price_max %></td>
-              </tr>
-              <tr>
-                <th>日数</th>
-                <td><%= @order.day_min %>日 ~<%= @order.day_max %>日</td>
-              </tr>
-            </tbody>
-          </table>
-          <%= link_to "詳細", "/orders/#{@order.id}", class: "btn btn-primary mt-3" %>
+      <div class="bg-light rounded-3 d-flex justify-content-center py-5">
+        <div>
+        <%= image_tag @order.main_order_image.variant(resize: '200x200'), class:"image-fluid mx-auto"%>
+        <table>
+          <tbody>
+            <tr>
+              <h4><%= @order.order_name %></h4>
+            </tr>
+            <tr class="pt-4">
+              <th>製作　　</th>
+              <td><%= @creator.creator_name %></td>
+            </tr>
+            <tr>
+              <th>予算</th>
+              <td>￥<%= @order.order_price_min %> ~ ￥<%= @order.order_price_max %></td>
+            </tr>
+            <tr>
+              <th>日数</th>
+              <td><%= @order.day_min %>日 ~<%= @order.day_max %>日</td>
+            </tr>
+          </tbody>
+        </table>
+        <%= link_to "詳細", "/orders/#{@order.id}", class: "btn btn-primary mt-3" %>
+        </div>
       </div>
     </div>
     <div>
