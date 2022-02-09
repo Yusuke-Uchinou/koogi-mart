@@ -22,18 +22,45 @@
     </div>
   </div>
 </div>
-<ul class="content-cards container">
-  <% @orders.each do |n| %>
+<% if @orders.exists? %>
+  <ul class="content-cards container">
+    <% @orders.each do |n| %>
+      <li class="card col m-3 item-card">      
+        <div class="card-img">
+          <%= image_tag n.main_order_image, class:"my-4 img-fluid " if n.main_order_image.attached? %>
+        </div>
+        <div class="card-body card-flame pe-4">
+          <h4 class="card-title pb-3"><%= n.order_name %></h4>
+          <h6 class="pb-3"><%= n.creator.creator_name %></h6>
+          <h6 class="pb-3">￥<%= n.order_price_min %> ~ ￥<%= n.order_price_max %></h6>
+          <%= link_to "詳細", "/orders/#{n.id}", class: "btn btn-primary" %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul class="content-cards container">
     <li class="card col m-3 item-card">      
       <div class="card-img">
-        <%= image_tag n.main_order_image, class:"my-4 img-fluid " if n.main_order_image.attached? %>
+        <img src="https://picsum.photos/200/150" class="card-img-top img-fluid" alt="sample"%>
       </div>
       <div class="card-body card-flame pe-4">
-        <h4 class="card-title pb-3"><%= n.order_name %></h4>
-        <h6 class="pb-3"><%= n.creator.creator_name %></h6>
-        <h6 class="pb-3">￥<%= n.order_price_min %> ~ ￥<%= n.order_price_max %></h6>
-        <%= link_to "詳細", "/orders/#{n.id}", class: "btn btn-primary" %>
+        <h4 class="card-title pb-3">サンプルオーダー1/h4>
+        <h6 class="pb-3">クリエイター名</h6>
+        <h6 class="pb-3">￥1000 ~ ￥99999999</h6>
+        <a href="#" class="btn btn-primary">詳細</a>
       </div>
     </li>
-  <% end %>
-</ul>
+    <li class="card col m-3 item-card">      
+      <div class="card-img">
+        <img src="https://picsum.photos/200/150" class="card-img-top img-fluid" alt="sample"%>
+      </div>
+      <div class="card-body card-flame pe-4">
+        <h4 class="card-title pb-3">サンプルオーダー2</h4>
+        <h6 class="pb-3">クリエイター名</h6>
+        <h6 class="pb-3">￥1000 ~ ￥99999999</h6>
+        <a href="#" class="btn btn-primary">詳細</a>
+      </div>
+    </li>
+  </ul>
+<% end %>

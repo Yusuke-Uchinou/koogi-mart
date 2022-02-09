@@ -26,7 +26,7 @@
   <li class="card col m-3 item-card" style="width: 200px; height: 300px;">
     <img src="https://picsum.photos/200/150" class="card-img-top img-fluid" alt="sample">
     <div class="card-body">
-      <h5 class="card-title">手作りフォトスタンド</h5>
+      <h5 class="card-title">サンプルアイテム１</h5>
       <p class="card-text">￥1500</p>
       <a href="#" class="btn btn-primary">詳細</a>
     </div>
@@ -34,7 +34,7 @@
   <li class="card col m-3 item-card" style="width: 200px; height: 300px;">
     <img src="https://picsum.photos/180/150" class="card-img-top img-fluid" alt="sample">
     <div class="card-body">
-      <h5 class="card-title">天然石ペンダント</h5>
+      <h5 class="card-title">サンプルアイテム2</h5>
       <p class="card-text">￥8000</p>
       <a href="#" class="btn btn-primary">詳細</a>
     </div>
@@ -47,7 +47,8 @@
     </div>
   </div>
 </div>
-<ul class="content-cards container">
+<% if @new_orders.exists?%>
+  <ul class="content-cards container">
   <% @new_orders.each do |n| %>
     <li class="card col m-3 item-card">      
       <div class="card-img">
@@ -61,7 +62,33 @@
       </div>
     </li>
   <% end %>
-</ul>
+  </ul>
+<% else %>
+  <ul class="content-cards container">
+    <li class="card col m-3 item-card">      
+      <div class="card-img">
+        <img src="https://picsum.photos/200/150" class="card-img-top img-fluid" alt="sample"%>
+      </div>
+      <div class="card-body card-flame pe-4">
+        <h4 class="card-title pb-3">サンプルオーダー1/h4>
+        <h6 class="pb-3">クリエイター名</h6>
+        <h6 class="pb-3">￥1000 ~ ￥99999999</h6>
+        <a href="#" class="btn btn-primary">詳細</a>
+      </div>
+    </li>
+    <li class="card col m-3 item-card">      
+      <div class="card-img">
+        <img src="https://picsum.photos/200/150" class="card-img-top img-fluid" alt="sample"%>
+      </div>
+      <div class="card-body card-flame pe-4">
+        <h4 class="card-title pb-3">サンプルオーダー2</h4>
+        <h6 class="pb-3">クリエイター名</h6>
+        <h6 class="pb-3">￥1000 ~ ￥99999999</h6>
+        <a href="#" class="btn btn-primary">詳細</a>
+      </div>
+    </li>
+  </ul>
+<% end %>
 <div class="creator-area container mt-4 mb-2">
   <div class="row align-items-start">
     <div class="col-6">
@@ -69,17 +96,42 @@
     </div>
   </div>
 </div>
-<ul class="content-cards container">
-  <% @new_creators.each do |n| %>
+<% if @new_creators.exists? %>
+  <ul class="content-cards container">
+    <% @new_creators.each do |n| %>
+      <li class="card col m-3 creator-card">      
+        <div class="card-img">
+          <%= image_tag n.image.variant(resize: '300x300'), class:"my-4 img-fluid " if n.image.attached? %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= n.creator_name %></h5>
+          <p class="card-in-text"><%= n.creator_short_text %></p>
+          <%= link_to "詳細", "/creators/#{n.id}", class: "btn btn-primary" %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul class="content-cards container">
     <li class="card col m-3 creator-card">      
       <div class="card-img">
-        <%= image_tag n.image.variant(resize: '300x300'), class:"my-4 img-fluid " if n.image.attached? %>
+        <img src="https://picsum.photos/300/300" class="card-img-top img-fluid" alt="sample"%>
       </div>
       <div class="card-body">
-        <h5 class="card-title"><%= n.creator_name %></h5>
-        <p class="card-in-text"><%= n.creator_short_text %></p>
-        <%= link_to "詳細", "/creators/#{n.id}", class: "btn btn-primary" %>
+        <h5 class="card-title">サンプルクリエイター1</h5>
+        <p class="card-in-text">説明文</p>
+        <a href="#" class="btn btn-primary">詳細</a>
       </div>
     </li>
-  <% end %>
-</ul>
+    <li class="card col m-3 creator-card">      
+      <div class="card-img">
+        <img src="https://picsum.photos/300/300" class="card-img-top img-fluid" alt="sample"%>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">サンプルクリエイター2</h5>
+        <p class="card-in-text">説明文</p>
+        <a href="#" class="btn btn-primary">詳細</a>
+      </div>
+    </li>
+  </ul>
+<% end %>
