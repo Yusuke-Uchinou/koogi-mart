@@ -9,8 +9,14 @@ Rails.application.routes.draw do
       get 'order_menu'
     end
   end
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get 'user_rooms'
+    end
+  end
   resources :orders do
-    resources :rooms, only: [:index, :new, :create, :show]
+    resources :rooms, only: [:index, :new, :create, :show] do
+      resources :messages, only: :create
+    end
   end
 end

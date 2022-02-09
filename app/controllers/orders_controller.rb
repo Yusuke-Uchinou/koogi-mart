@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @creator = Creator.find(@order.creator_id)
     @room = Room.new
+    @order_rooms = Room.find_by(creator_id: @creator.id, user_id: current_user.id)
   end
 
   def edit

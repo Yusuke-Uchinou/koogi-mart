@@ -1,33 +1,35 @@
-<div class='account-page' id='account-page'>
-  <div class='account-page__inner clearfix'>
-    <div class='account-page__inner--left account-page__header'>
-      <h2 class="m-3">プロフィールの編集</h2>
-    </div>
-    <div class='account-page__inner--right user-form'>
-      <%= form_with model: current_user, local: true do |f|%>
-        <%= render 'shared/error_messages', model: f.object %>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :name%>
+<div class="title-contents">
+  <div class="header-logo m-3">
+  <%= link_to root_path, class: "text-decoration-none link-dark" do %>
+    <h1>Koogi<br>mart</h1>
+  <% end %>
+  </div>
+</div>
+<div class='my-page-main p-2'>
+  <div class='order-input-area my-5 mx-auto p-4'>
+    <div class='"container'>
+      <h4 class="m-3">プロフィールの編集</h4>
+      <div class='account-page__inner--right user-form'>
+        <%= form_with model: current_user, local: true do |f|%>
+          <%= render 'shared/error_messages', model: f.object %>
+        <div class="row g-3">
+          <div class="col-sm-12">
+            <label class="form-label">ユーザー名<span class="text-muted">(必須)</span></label>
+            <%= f.text_field :nickname, id: "nickname", class: "input-default form-control", maxlength:"40" %>
           </div>
-          <div class='field-input'>
-            <%= f.text_field :nickname, autofocus: true%>
+          <div class="col-sm-12">
+            <label class="form-label">メールアドレス<span class="text-muted">(必須)</span></label>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"%>
           </div>
         </div>
-        <div class='field'>
-          <div class='field-label'>
-            <%= f.label :email%>
-          </div>
-          <div class='field-input'>
-            <%= f.email_field :email%>
-          </div>
+        <hr class="my-4">
+        <%= f.submit "Update", class:"w-100 btn btn-primary btn-lg"%>
+        <% end %>
+        <div class="text-center pt-4">
+          <%= link_to "マイページに戻る", :back, class: 'btn'%>
+          <%= link_to "住所情報の編集を行う", "#", class: 'btn'%>
         </div>
-        <div class='actions'>
-          <%= f.submit "Update", class: 'btn'%>
-        </div>
-      <% end %>
-      <%= link_to "マイページに戻る", :back, class: 'btn'%>
-      <%= link_to "住所情報の編集を行う", "#", class: 'btn'%>
+      </div>
     </div>
   </div>
 </div>
