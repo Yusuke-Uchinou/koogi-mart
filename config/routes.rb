@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   end
   resources :orders do
     resources :rooms, only: [:index, :new, :create, :show] do
+      member do
+        get 'make_estimate'
+      end
       resources :messages, only: :create
     end
   end

@@ -1,7 +1,8 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :order_find, only: [:index, :new, :create, :make_estimate]
 
   def index
-    @order = Order.find(params[:order_id])
     @creator = Creator.find(@order.creator_id)
     @room = Room.new
   end
@@ -10,7 +11,6 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @order = Order.find(params[:order_id])
     @room = Room.new(room_params)
     if @room.save
       redirect_to "/orders/#{params[:order_id]}/rooms/#{@room.id}"
@@ -27,10 +27,23 @@ class RoomsController < ApplicationController
     @message = Message.new
   end
 
+  def make_estimate
+    @estimate = Estimate.new
+    @room = Room.find(params[:id])
+    @user = @room.user
+    
+  end
+
   private
   def room_params
-    @order = Order.find(params[:order_id])
     @creator = Creator.find(@order.creator_id)
     params.require(:room).permit(:order_id).merge(user_id: current_user.id, creator_id: @creator.id)
+  end
+
+  def estimate_params
+  end
+
+  def order_find
+    @order = Order.find(params[:order_id])
   end
 end
