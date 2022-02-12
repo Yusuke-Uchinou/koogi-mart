@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_one :creator
   has_many :rooms
   has_many :messages
+  has_many :estimates
 end
