@@ -27,20 +27,10 @@ class RoomsController < ApplicationController
     @message = Message.new
   end
 
-  def make_estimate
-    @estimate = Estimate.new
-    @room = Room.find(params[:id])
-    @user = @room.user
-    
-  end
-
   private
   def room_params
     @creator = Creator.find(@order.creator_id)
     params.require(:room).permit(:order_id).merge(user_id: current_user.id, creator_id: @creator.id)
-  end
-
-  def estimate_params
   end
 
   def order_find

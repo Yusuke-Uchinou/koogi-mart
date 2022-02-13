@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2022_02_11_071416) do
 
   create_table "estimates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "estmate_price", null: false
-    t.text "estimate_text", null: false
+    t.text "estimate_text"
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
