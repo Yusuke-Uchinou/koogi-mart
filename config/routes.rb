@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :orders do
     resources :rooms, only: [:index, :new, :create, :show] do
       resources :messages, only: :create
-      resources :estimates, only: [:new, :create]
+      resources :estimates, only: [:new, :create, :show]
     end
   end
 end

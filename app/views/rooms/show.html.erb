@@ -83,6 +83,10 @@
           <div class="mt-2">
             <%= link_to "オーダー内容から見積を作成する", "/orders/#{@order.id}/rooms/#{@room.id}/estimates/new", class: "btn btn-warning" %>
           </div>
+        <% elsif current_user.id == @room.user_id && @estimate.present?%>
+          <div class="mt-2">
+            <%= link_to "作成された見積もり内容を確認する", "/orders/#{@order.id}/rooms/#{@room.id}/estimates/#{@estimate.id}", class: "btn btn-warning" %>
+          </div>
         <% end %>
         </div>
       </div>
