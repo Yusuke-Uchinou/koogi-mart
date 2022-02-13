@@ -81,7 +81,7 @@
         <%= link_to "詳細", "/orders/#{@order.id}", class: "btn btn-primary mt-3" %>
         <% if current_user.id == @creator.user_id %>
           <div class="mt-2">
-            <%= link_to "オーダー内容から見積を作成する", "#", class: "btn btn-warning" %>
+            <%= link_to "オーダー内容から見積を作成する", "/orders/#{@order.id}/rooms/#{@room.id}/estimates/new", class: "btn btn-warning" %>
           </div>
         <% end %>
         </div>
