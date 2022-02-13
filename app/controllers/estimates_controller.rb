@@ -18,7 +18,7 @@ class EstimatesController < ApplicationController
   end
 
   def show
-    @estimate = Estimate.find(params[:room_id])
+    @estimate = Estimate.find(params[:id])
   end
 
   private
