@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def index
     @creators = Creator.all.order('created_at DESC')
     @orders = Order.all
