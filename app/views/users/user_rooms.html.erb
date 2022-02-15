@@ -33,12 +33,19 @@
   <div class="rooms-main-area my-5 mx-auto p-5">
     <h4 class="p-3">チャット一覧</h4>
     <div class="container">
-      <div class="p-3 border-bottom pb-3 ">
+      <div class="p-3 border-bottom pb-3">
         <h5 class="border-bottom pb-3">見積もり依頼中のチャット</h5>
         <% if @rooms.exists?(user_id: current_user.id)%>
           <% @rooms.each do |r|%>
             <div class="border-bottom pt-2">
-              <%= link_to "#{r.order.order_name}","/orders/#{r.order.id}/rooms/#{r.id}"%>
+              <div class="d-flex justify-content-between">
+                <p><%= link_to "#{r.order.order_name}","/orders/#{r.order.id}/rooms/#{r.id}"%></p>
+                <% if @estimates.exists?(room_id: r.id) %>
+                  <% @estimates.each do |e|%>
+                    <p class="me-4"><%= link_to "見積もり内容を確認", "/orders/#{r.order.id}/rooms/#{r.id}/estimates/#{e.id}", class: "text-end" %></p>
+                  <% end %>
+                <% end %>
+              </div>
               <p>クリエイター名：<%= r.creator.creator_name%></p>
               <p><%= r.created_at %></p>
             </div>
@@ -52,7 +59,14 @@
         <h5 class="border-bottom pb-3">マイアトリエに依頼されたチャット</h5>
           <% @owner_rooms.each do |r|%>
             <div class="border-bottom pt-2">
-              <%= link_to "#{r.order.order_name}","/orders/#{r.order.id}/rooms/#{r.id}"%>
+              <div class="d-flex justify-content-between">
+                <p><%= link_to "#{r.order.order_name}","/orders/#{r.order.id}/rooms/#{r.id}"%></p>
+                <% if @owner_estimates.exists?(room_id: r.id) %>
+                  <% @owner_estimates.each do |e|%>
+                    <p class="me-4"><%= link_to "見積もり内容を確認", "/orders/#{r.order.id}/rooms/#{r.id}/estimates/#{e.id}", class: "text-end" %></p>
+                  <% end %>
+                <% end %>
+              </div>
               <p>依頼ユーザー名：<%= r.user.nickname%></p>
               <p><%= r.created_at %></p>
             </div>

@@ -18,9 +18,12 @@ class UsersController < ApplicationController
 
   def user_rooms
     @rooms = Room.where(user_id: current_user.id)
+    @estimates = Estimate.where(user_id: current_user.id)
     if @creators.exists?(user_id: current_user.id)
       @owner_rooms = Room.where(creator_id: @current_creator.id)
+      @owner_estimates = Estimate.where(room_id: @owner_rooms.ids)
     end
+
   end
 
   private
