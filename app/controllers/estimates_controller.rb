@@ -21,6 +21,18 @@ class EstimatesController < ApplicationController
     @estimate = Estimate.find(params[:id])
   end
 
+  def edit
+    @estimate = Estimate.find(params[:id])
+  end
+
+  def update
+    @estimate = Estimate.find(params[:id])
+    if @estimate.save
+      redirect_to order_room_estimate_path
+    else
+      render edit_order_room_estimate_path
+  end
+
   private
   def estimate_params
     params.require(:estimate).permit(:estimate_price, :estimate_text, :estimate_image).merge(user_id: @user.id, room_id: @room.id)
