@@ -19,6 +19,27 @@ class EstimatesController < ApplicationController
 
   def show
     @estimate = Estimate.find(params[:id])
+    @room = Room.find(@estimate.room_id)
+    @creator = Creator.find(@room.creator_id)
+  end
+
+  def edit
+    @room = Room.find(params[:room_id])
+    @order = Order.find(params[:order_id])
+    @user = @room.user
+    @estimate = Estimate.find(params[:id])
+  end
+
+  def update
+    @room = Room.find(params[:room_id])
+    @order = Order.find(params[:order_id])
+    @user = @room.user
+    @estimate = Estimate.find(params[:id])
+    if @estimate.save
+      redirect_to order_room_estimate_path
+    else
+      render edit_order_room_estimate_path
+    end
   end
 
   private
