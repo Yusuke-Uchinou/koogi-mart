@@ -17,6 +17,10 @@ class EstimatesController < ApplicationController
     end
   end
 
+  def show
+    @estimate = Estimate.find(params[:id])
+  end
+
   private
   def estimate_params
     params.require(:estimate).permit(:estimate_price, :estimate_text, :estimate_image).merge(user_id: @user.id, room_id: @room.id)

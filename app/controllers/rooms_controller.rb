@@ -25,6 +25,7 @@ class RoomsController < ApplicationController
     @creator = Creator.find(@order.creator_id)
     @messages = @room.messages.includes(:user)
     @message = Message.new
+    @estimate = Estimate.find(params[:id])
   end
 
   private
