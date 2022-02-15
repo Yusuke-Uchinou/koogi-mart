@@ -19,6 +19,8 @@ class EstimatesController < ApplicationController
 
   def show
     @estimate = Estimate.find(params[:id])
+    @room = Room.find(@estimate.room_id)
+    @creator = Creator.find(@room.creator_id)
   end
 
   def edit

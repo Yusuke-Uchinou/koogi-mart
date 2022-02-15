@@ -27,7 +27,11 @@
           </div>
         </div>
         <hr class="my-4">
-        <%= link_to "精算する", class:"w-100 btn btn-primary btn-lg"%>
+        <% if @creator.user_id == current_user.id %>
+          <%= link_to "見積もり内容を編集する", class:"w-100 btn btn-primary btn-lg"%>
+        <% else %>
+          <%= link_to "精算する", class:"w-100 btn btn-primary btn-lg"%>
+        <% end %>
     </div>
   </div>
   <div class="text-center">
